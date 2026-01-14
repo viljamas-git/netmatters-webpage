@@ -67,6 +67,8 @@ a {
     font-size: 13px;
     height: auto;
 
+
+
 }
 
 .h1 {
@@ -77,6 +79,24 @@ a {
     margin-bottom: 40px;
 
 }
+
+
+
+.h2 {
+
+
+    font-size: 20px;
+
+
+}
+
+.block {
+
+
+    text-align: center;
+
+}
+
 
 h4 {
 
@@ -299,6 +319,12 @@ footer {
 strong {
 
     font-weight: 600;
+
+    a {
+
+        font-size: 16px;
+
+    }
 
 }
 
