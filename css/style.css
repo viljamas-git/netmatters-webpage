@@ -1,12 +1,103 @@
+@font-face {
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local(""),url(/font/poppins-v15-latin-regular.woff2) format("woff2"),url(/font/poppins-v15-latin-regular.woff) format("woff")
+
+}
+
+@font-face {
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local(""),url(/font/poppins-v15-latin-600.woff2) format("woff2"),url(/font/poppins-v15-latin-600.woff) format("woff")
+
+}
+
+@font-face {
+
+    font-family: Poppins;
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: local(""),url(/font/poppins-v15-latin-600italic.woff2) format("woff2"),url(/font/poppins-v15-latin-600italic.woff) format("woff")
+
+}
+
 body {
+
     margin: 0;
+    font-family: Poppins, sans-serif;
+    line-height: 1.42857143;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+
+}
+
+p {
+
+
+    line-height: 30px;
+
+
 }
 
 * {
-box-sizing: border-box;
+
+    box-sizing: border-box;
+
 }
 
+ul {
+
+    list-style: none;
+    padding-left: 0; /* removes default indent */
+    margin: 0;  /* optional */
+
+}
+
+a {
+
+    color: inherit;        /* use parent text color */
+    text-decoration: none; /* remove underline */
+    font-size: 13px;
+    height: auto;
+
+}
+
+.h1 {
+
+    font-size: 2.25rem;
+    line-height: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+
+h4 {
+
+    text-transform: uppercase;
+    font-weight: 400;
+
+}
+
+
+div {
+
+
+    display: block;
+    unicode-bidi: isolate;
+
+
+}
+
+
 .container {
+
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
@@ -25,18 +116,42 @@ box-sizing: border-box;
     }
 }
 
+.homepage-branded-text {
+
+    background-color: rgb(50, 53, 68);
+    color: white;
+
+}
+
+
+
+.section {
+
+    padding: 14 15 50 15;
+
+}
+
+
+
 footer {
-    background-color: #323544;
+
+    background-color: rgb(50, 53, 68);
     color: #fff;
     padding: 30px 0 0;
     position: relative;
+    letter-spacing: 0.4px;
+    font-family: Poppins, sans-serif;
+    line-height: 22px;
+    text-size-adjust: 100%;
 
     .footer-row {
         display: flex;
         flex-wrap: wrap;
+        width: 100%;
 
         .footer-row {
             flex: 100%;
+            flex-wrap: wrap;
             margin-bottom: 30px;
 
             @media (min-width: 768px) {
@@ -58,5 +173,148 @@ footer {
             }
         }
     }
+
+.footer-logo img {
+
+        width: 250px;
+
+    }
 }
-    
+
+.footer-bottom {
+
+    padding-top: 10px;
+    font-size: 13px;
+    background: #212330;
+    font-family: Poppins, sans-serif;
+    line-height: 22px;
+
+}
+
+.footer-menu {
+
+    margin-bottom: 30px;
+    font-weight: 400;
+
+}
+
+.footer-info {
+
+    width: 312.344px;
+
+}
+
+.license {
+
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: #fff;
+    letter-spacing: 0.4px;
+
+    ul {
+
+        margin-top: -2px;
+
+    }
+}
+
+.footer-company-info {
+
+    width: 384px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.footer-social-logos {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    img {
+
+        background-color: rgb(33, 35, 48);
+        padding: 12px 38px 12px 38px;
+        margin: 0px 10px 6px 0px;
+        border-right-color: rgb(51, 54, 69);
+
+    }
+}
+
+
+.btn-primary-inverse {
+
+    border: 0.667px;
+    padding: 10px 30px 10px 30px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: rgb(39, 41, 54);
+    display: inline-block;
+    border-radius: 5px;
+
+}
+
+
+.btn-google {
+
+    border: 0.667px;
+    padding: 10px 30px 10px 30px;
+    margin-bottom: 17px;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: rgb(67, 135, 246);
+    display: inline-block;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+}
+
+.btn-trustpilot {
+
+    border: 0.667px;
+    padding: 10px 30px 10px 30px;
+    margin-bottom: 17px;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: rgb(0, 182, 123);
+    display: inline-block;
+    border-radius: 5px;
+
+}
+
+.client-quote {
+
+
+    font-family: Poppins, sans-serif;
+    font-size: 20.8px;
+    font-style: italic;
+    font-weight: 600;
+
+
+}
+
+strong {
+
+    font-weight: 600;
+
+}
+
+.client-quote-author {
+
+
+    font-size: 17.6px;
+    color: rgb(163, 168, 172);
+    font-weight: 600;
+
+    a {
+
+        color: white;
+        font-size: 17.6px;
+
+    }
+
+
+}
