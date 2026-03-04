@@ -46,7 +46,7 @@
   .mc-logo-tooltip {
   display: none;
   position: absolute;
-  bottom: 100%;
+  bottom: calc(100% + 5px);
   left: -200px;
   right: -200px;
 }
@@ -622,8 +622,8 @@ header .mc-header-inner .mc-mobile-contact {
 .mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box:hover .mc-logo-tooltip {
   opacity: 1;
   visibility: visible;
+  pointer-events: all;
   transform: translateY(-12px);
-  pointer-events: auto;
 }
 // Styles .mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box .mc-logo-tooltip: controls opacity, visibility, pointer-events to define this element's appearance and layout.
 .mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box .mc-logo-tooltip {
@@ -635,7 +635,7 @@ header .mc-header-inner .mc-mobile-contact {
     opacity 0.25s ease,
     transform 0.25s ease;
   position: absolute;
-  bottom: calc(100% + 5px);
+  bottom: 100%;
   left: -200px;
   right: -200px;
   z-index: 70;
