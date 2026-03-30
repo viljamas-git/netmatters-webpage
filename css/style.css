@@ -561,7 +561,14 @@ header .mc-header-inner .mc-header-row .mc-header-logo {
   }
 }
 /* Styles header .mc-header-inner .mc-header-row .mc-header-logo a img: controls max-width to define this element's appearance and layout. */
+header .mc-header-inner .mc-header-row .mc-header-logo a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+/* Styles header .mc-header-inner .mc-header-row .mc-header-logo a img: controls max-width to define this element's appearance and layout. */
 header .mc-header-inner .mc-header-row .mc-header-logo a img {
+  display: block;
   max-width: 100%;
 }
 /* Styles header .mc-header-inner .mc-header-row .mc-hidden-mobile: controls padding, max-width, font-size to define this element's appearance and layout. */
@@ -2159,6 +2166,8 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
 /* Styles .mc-services-list .mc-services-row: controls max-width to define this element's appearance and layout. */
 .mc-services-list .mc-services-row {
   max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
 }
 /* Styles .mc-services-list .mc-services-row .mc-services-header: controls display, flex-direction, justify-content to define this element's appearance and layout. */
 .mc-services-list .mc-services-row .mc-services-header {

@@ -5,6 +5,8 @@
 // Styles .mc-services-list .mc-services-row: controls max-width to define this element's appearance and layout.
 .mc-services-list .mc-services-row {
   max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
 }
 // Styles .mc-services-list .mc-services-row .mc-services-header: controls display, flex-direction, justify-content to define this element's appearance and layout.
 .mc-services-list .mc-services-row .mc-services-header {

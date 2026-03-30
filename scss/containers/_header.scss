@@ -51,7 +51,14 @@ header .mc-header-inner .mc-header-row .mc-header-logo {
   }
 }
 // Styles header .mc-header-inner .mc-header-row .mc-header-logo a img: controls max-width to define this element's appearance and layout.
+header .mc-header-inner .mc-header-row .mc-header-logo a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+// Styles header .mc-header-inner .mc-header-row .mc-header-logo a img: controls max-width to define this element's appearance and layout.
 header .mc-header-inner .mc-header-row .mc-header-logo a img {
+  display: block;
   max-width: 100%;
 }
 // Styles header .mc-header-inner .mc-header-row .mc-hidden-mobile: controls display to define this element's appearance and layout.
