@@ -344,25 +344,62 @@ body {
   left: 0;
   transition: all 0.5s ease;
 }
+/* Styles .mc-head: keeps primary header/nav interactive when sticky header markup is not present. */
+.mc-head {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mc-head.mc-sticky-active {
+  background-color: rgb(51, 54, 69);
+}
+
+.mc-head.mc-sticky-active #mc-mainHeader,
+.mc-head.mc-sticky-active .mc-main-nav {
+  visibility: hidden;
+}
+
+.mc-head .mc-main-nav {
+  visibility: hidden;
+}
+
+.mc-head #mc-mainHeader {
+  visibility: hidden;
+  background-color: rgb(51, 54, 69);
+}
+
+.mc-sticky-header .mc-main-nav {
+  visibility: visible !important;
+}
 /* Styles .mc-hidden-header: controls transition, top, pointer-events to define this element's appearance and layout. */
 .mc-hidden-header {
-  transition: all 0.5s ease;
-  top: -230px;
-  pointer-events: none !important;
+  transition: all 0.8s ease;
+  top: var(--mc-sticky-hidden-top, -230px);
+  pointer-events: auto !important;
 }
 /* Styles .mc-visible-header: controls transition, top, pointer-events to define this element's appearance and layout. */
 .mc-visible-header {
-  transition: all 0.5s ease;
+  transition: all 0.8s ease;
   top: 0;
+  pointer-events: auto;
 }
 /* Styles .mc-hidden: controls display to define this element's appearance and layout. */
 .mc-hidden {
   display: none;
 }
 /* Styles .mc-is-hidden: controls visibility, pointer-events to define this element's appearance and layout. */
+/* Styles .mc-no-transition: disables header animation when hidden at top. */
+.mc-no-transition {
+  transition: none !important;
+  top: var(--mc-sticky-hidden-top, -230px);
+}
 .mc-is-hidden {
   visibility: hidden;
   pointer-events: none !important;
+}
+
+.mc-hidden-header.mc-is-hidden {
+  pointer-events: auto !important;
 }
 /* Styles .mc-container: controls margin-right, margin-left, padding-left to define this element's appearance and layout. */
 .mc-container {
@@ -1493,6 +1530,9 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
 /* Styles .mc-banner: controls margin-bottom to define this element's appearance and layout. */
 .mc-banner {
   margin-bottom: 0;
+  position: relative;
+  min-height: 550px;
+  overflow: hidden;
 }
 /* Styles .mc-banner .mc-banner-slide: controls display, flex-direction, justify-content to define this element's appearance and layout. */
 .mc-banner .mc-banner-slide {
@@ -1501,15 +1541,27 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
   justify-content: center;
   width: 100%;
   min-height: 550px;
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.85s linear;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.mc-banner .mc-banner-slide.is-active {
+  pointer-events: auto;
 }
 /* Styles .mc-banner .mc-banner-slide .mc-content: controls color, text-align, padding to define this element's appearance and layout. */
 .mc-banner .mc-banner-slide .mc-content {
   color: #fff;
   text-align: center;
-  padding: 150px 0 60px;
+  padding: 105px 0;
 }
 /* Responsive block for @media (min-width: 992px): adjusts layout and component behaviour at this breakpoint/rule. */
 @media (min-width: 992px) {
@@ -1736,6 +1788,53 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
 .mc-banner7 .mc-cybersecurity-button:hover {
   background-color: #e80a42;
   color: #fff;
+}
+/* Styles .mc-banner .mc-banner-controls: controls position, bottom, left to define this element's appearance and layout. */
+.mc-banner .mc-banner-controls {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transform: translateX(-50%);
+}
+/* Styles .mc-banner .mc-banner-controls .mc-banner-dot: controls width, height, border to define this element's appearance and layout. */
+.mc-banner .mc-banner-controls .mc-banner-dot {
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+/* Styles .mc-banner .mc-banner-controls .mc-banner-dot::before: controls content, width, height to define this element's appearance and layout. */
+.mc-banner .mc-banner-controls .mc-banner-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.6;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Styles .mc-banner .mc-banner-controls .mc-banner-dot.is-active: controls border-color to define this element's appearance and layout. */
+.mc-banner .mc-banner-controls .mc-banner-dot.is-active {
+  border-color: #fff;
+}
+/* Styles .mc-banner .mc-banner-controls .mc-banner-dot.is-active::before: controls opacity to define this element's appearance and layout. */
+.mc-banner .mc-banner-controls .mc-banner-dot.is-active::before {
+  opacity: 1;
+}
+/* Styles .mc-banner .mc-banner-controls .mc-banner-dot:focus-visible: controls outline to define this element's appearance and layout. */
+.mc-banner .mc-banner-controls .mc-banner-dot:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 /* Styles .mc-CD span: controls color to define this element's appearance and layout. */
 .mc-CD span {
@@ -2984,6 +3083,30 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
   padding-left: 20px;
   line-height: 1.375rem;
 }
+.mc-news
+  .mc-news-row
+  .mc-news-article
+  a
+  .mc-article-description
+  .mc-article-author
+  .mc-article-author-name
+  strong {
+  display: block;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mc-news
+  .mc-news-row
+  .mc-news-article
+  a
+  .mc-article-description
+  .mc-article-author
+  .mc-article-author-name
+  br {
+  display: none;
+}
 /* Styles .mc-news .mc-news-row .mc-news-article a:hover: controls top, transition to define this element's appearance and layout. */
 .mc-news .mc-news-row .mc-news-article a:hover {
   top: -10px;
@@ -3027,6 +3150,17 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
   min-width: 0;
   overflow-x: clip;
 }
+.mc-sliding-imgs {
+  overflow-x: hidden;
+}
+.mc-clients .mc-sliding-imgs {
+  overflow-y: visible;
+}
+.mc-sliding-imgs .mc-sliding-list.mc-logo-carousel-track {
+  justify-content: flex-start;
+  width: max-content;
+  will-change: transform;
+}
 /* Styles .mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box: controls width, margin-right, padding to define this element's appearance and layout. */
 .mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box {
   width: auto;
@@ -3064,7 +3198,7 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
   .mc-logo-tooltip {
   display: none;
   position: absolute;
-  bottom: calc(100% + 5px);
+  bottom: 100%;
   left: -200px;
   right: -200px;
 }
@@ -3278,7 +3412,7 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 3001;
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: row;
@@ -3286,6 +3420,10 @@ nav .mc-main-nav li:hover .mc-nav-item::before {
   justify-content: center;
   padding: 30px;
   opacity: 1;
+}
+
+.mc-cookies .mc-cookies-container .mc-cookie-consent.mc-cookies-consent-hidden {
+  display: none;
 }
 /* Styles .mc-cookies .mc-cookies-container .mc-cookie-consent .mc-cookies-box: controls margin, width, position to define this element's appearance and layout. */
 .mc-cookies .mc-cookies-container .mc-cookie-consent .mc-cookies-box {
@@ -3640,8 +3778,16 @@ header .mc-header-inner .mc-mobile-contact {
 .mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box:hover .mc-logo-tooltip {
   opacity: 1;
   visibility: visible;
-  pointer-events: all;
   transform: translateY(-12px);
+  pointer-events: all;
+  transition-delay: 0s;
+}
+.mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box.mc-tooltip-visible .mc-logo-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-12px);
+  pointer-events: all;
+  transition-delay: 0s;
 }
 /* Styles .mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box .mc-logo-tooltip: controls opacity, visibility, pointer-events to define this element's appearance and layout. */
 .mc-sliding-imgs .mc-sliding-list .mc-sliding-img-box .mc-logo-tooltip {
@@ -3651,9 +3797,10 @@ header .mc-header-inner .mc-mobile-contact {
   transform: translateY(0);
   transition:
     opacity 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    visibility 0s linear 0.2s;
   position: absolute;
-  bottom: 100%;
+  bottom: calc(100% + 5px);
   left: -200px;
   right: -200px;
   z-index: 70;
@@ -3854,13 +4001,13 @@ header .mc-header-inner .mc-mobile-contact {
   background: #926fb1;
   border-radius: 2px;
 }
-/* Styles .mc-cookies: controls display to define this element's appearance and layout. */
+/* Styles .mc-cookies: keeps cookie controls enabled so consent UI can render. */
 .mc-cookies {
-  display: none !important;
+  display: block;
 }
 /* Styles .mc-banner .mc-banner-slide.is-hidden-for-now: controls display to define this element's appearance and layout. */
 .mc-banner .mc-banner-slide.is-hidden-for-now {
-  display: none !important;
+  display: flex;
 }
 /* Styles .mc-news .mc-news-header h2: controls margin-top to define this element's appearance and layout. */
 .mc-news .mc-news-header h2 {
@@ -3911,4 +4058,26 @@ header .mc-header-inner .mc-mobile-contact {
 /* Styles .xupes-title: controls padding-bottom to define this element's appearance and layout. */
   .xupes-title {
   padding-bottom: 0px;
+}
+
+
+/* Side menu behaviour enhancements */
+body.mc-menu-open {
+  overflow: hidden;
+}
+
+.mc-sidebar .mc-sidebar-list .mc-mobile-sub-menu {
+  display: none;
+}
+
+.mc-sidebar .mc-sidebar-list .mc-mobile-list-title .mc-mobile-list-header::after {
+  content: "\e913";
+  font-family: icomoon;
+  font-size: 0.875rem;
+  margin-top: 8px;
+  transition: transform 0.2s ease;
+}
+
+.mc-sidebar .mc-sidebar-list .mc-mobile-list-title.is-expanded .mc-mobile-list-header::after {
+  transform: rotate(180deg);
 }

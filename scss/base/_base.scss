@@ -7,6 +7,9 @@ body {
   line-height: 1.5;
   font-weight: 400;
 }
+body.mc-menu-open {
+  overflow: hidden;
+}
 // Styles *: controls box-sizing to define this element's appearance and layout.
 * {
   box-sizing: border-box;
@@ -73,25 +76,64 @@ body {
   left: 0;
   transition: all 0.5s ease;
 }
+
+// Styles .mc-head: keeps primary header/nav interactive when sticky header markup is not present.
+.mc-head {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mc-head.mc-sticky-active {
+  background-color: rgb(51, 54, 69);
+}
+
+.mc-head.mc-sticky-active #mc-mainHeader,
+.mc-head.mc-sticky-active .mc-main-nav {
+  visibility: hidden;
+}
+
+.mc-head .mc-main-nav {
+  visibility: hidden;
+}
+
+.mc-head #mc-mainHeader {
+  visibility: hidden;
+  background-color: rgb(51, 54, 69);
+}
+
+.mc-sticky-header .mc-main-nav {
+  visibility: visible !important;
+}
+
 // Styles .mc-hidden-header: controls transition, top, pointer-events to define this element's appearance and layout.
 .mc-hidden-header {
-  transition: all 0.5s ease;
-  top: -230px;
-  pointer-events: none !important;
+  transition: all 0.8s ease;
+  top: var(--mc-sticky-hidden-top, -230px);
+  pointer-events: auto !important;
 }
 // Styles .mc-visible-header: controls transition, top, pointer-events to define this element's appearance and layout.
 .mc-visible-header {
-  transition: all 0.5s ease;
+  transition: all 0.8s ease;
   top: 0;
+  pointer-events: auto;
 }
 // Styles .mc-hidden: controls display to define this element's appearance and layout.
 .mc-hidden {
   display: none;
 }
 // Styles .mc-is-hidden: controls visibility, pointer-events to define this element's appearance and layout.
+// Styles .mc-no-transition: disables header animation when hidden at top.
+.mc-no-transition {
+  transition: none !important;
+  top: var(--mc-sticky-hidden-top, -230px);
+}
 .mc-is-hidden {
   visibility: hidden;
   pointer-events: none !important;
+}
+
+.mc-hidden-header.mc-is-hidden {
+  pointer-events: auto !important;
 }
 // Styles .mc-container: controls width to define this element's appearance and layout.
 .mc-container {

@@ -261,6 +261,19 @@
   padding-left: 20px;
   line-height: 1.375rem;
 }
+.mc-news
+  .mc-news-row
+  .mc-news-article
+  a
+  .mc-article-description
+  .mc-article-author
+  .mc-article-author-name
+  strong {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 // Styles .mc-news .mc-news-row .mc-news-article a:hover: controls top, transition to define this element's appearance and layout.
 .mc-news .mc-news-row .mc-news-article a:hover {
   top: -10px;

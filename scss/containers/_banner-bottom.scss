@@ -1,6 +1,9 @@
 // Styles .mc-banner: controls margin-bottom to define this element's appearance and layout.
 .mc-banner {
   margin-bottom: 0;
+  position: relative;
+  min-height: 550px;
+  overflow: hidden;
 }
 // Styles .mc-banner .mc-banner-slide: controls display, flex-direction, justify-content to define this element's appearance and layout.
 .mc-banner .mc-banner-slide {
@@ -9,15 +12,28 @@
   justify-content: center;
   width: 100%;
   min-height: 550px;
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.85s linear;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.mc-banner .mc-banner-slide.is-active {
+  pointer-events: auto;
 }
 // Styles .mc-banner .mc-banner-slide .mc-content: controls padding, text-align to define this element's appearance and layout.
 .mc-banner .mc-banner-slide .mc-content {
   color: #fff;
   text-align: center;
-  padding: 150px 0 60px;
+  padding: 105px 0;
 }
 // Responsive block for @media (min-width: 992px): adjusts layout and component behaviour at this breakpoint/rule.
 @media (min-width: 992px) {
@@ -202,6 +218,53 @@
 // Styles .mc-banner7 .mc-cybersecurity-button: controls background-color, color to define this element's appearance and layout.
 .mc-banner7 .mc-cybersecurity-button {
   @include button-theme(#f62459, #e80a42);
+}
+// Styles .mc-banner .mc-banner-controls: controls position, bottom, left to define this element's appearance and layout.
+.mc-banner .mc-banner-controls {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transform: translateX(-50%);
+}
+// Styles .mc-banner .mc-banner-controls .mc-banner-dot: controls width, height, border to define this element's appearance and layout.
+.mc-banner .mc-banner-controls .mc-banner-dot {
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+// Styles .mc-banner .mc-banner-controls .mc-banner-dot::before: controls content, width, height to define this element's appearance and layout.
+.mc-banner .mc-banner-controls .mc-banner-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.6;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+// Styles .mc-banner .mc-banner-controls .mc-banner-dot.is-active: controls border-color to define this element's appearance and layout.
+.mc-banner .mc-banner-controls .mc-banner-dot.is-active {
+  border-color: #fff;
+}
+// Styles .mc-banner .mc-banner-controls .mc-banner-dot.is-active::before: controls opacity to define this element's appearance and layout.
+.mc-banner .mc-banner-controls .mc-banner-dot.is-active::before {
+  opacity: 1;
+}
+// Styles .mc-banner .mc-banner-controls .mc-banner-dot:focus-visible: controls outline to define this element's appearance and layout.
+.mc-banner .mc-banner-controls .mc-banner-dot:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 // Styles .mc-CD span: controls color to define this element's appearance and layout.
 .mc-CD span {
