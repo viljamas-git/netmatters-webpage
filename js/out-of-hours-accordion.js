@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Toggle the out-of-hours support panel using an accessible accordion pattern.
   const accordion = document.querySelector('[data-accordion]');
 
   if (!accordion) {
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const toggleAccordion = () => {
+    // Keep aria-expanded and hidden state synchronized for assistive technologies.
     const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
     trigger.setAttribute('aria-expanded', String(!isExpanded));
     panel.hidden = isExpanded;

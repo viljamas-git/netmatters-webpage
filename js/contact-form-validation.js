@@ -1,4 +1,5 @@
 (function () {
+  // Client-side validation for the contact form to provide immediate feedback.
   const form = document.querySelector('#mc-contact-form');
 
   if (!form) {
@@ -16,6 +17,7 @@
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const setError = (field, message) => {
+    // Apply error styling and show the field-specific message.
     const input = form.elements[field];
 
     if (!input) {
@@ -33,6 +35,7 @@
   };
 
   const clearError = (field) => {
+    // Remove error styling/message once the field becomes valid.
     const input = form.elements[field];
 
     if (!input) {
@@ -50,6 +53,7 @@
   };
 
   const validateField = (field) => {
+    // Required-field validation plus a simple email format check.
     const input = form.elements[field];
 
     if (!input) {
@@ -89,6 +93,7 @@
   });
 
   form.addEventListener('submit', function (event) {
+    // Prevent submit if any field fails validation.
     let isValid = true;
 
     Object.keys(fields).forEach((field) => {
